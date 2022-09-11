@@ -1,0 +1,47 @@
+﻿@page
+@model Todo_App.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Task</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tasks_Dto.Task)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tasks_Dto.Task)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tasks_Dto.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tasks_Dto.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tasks_Dto.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tasks_Dto.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tasks_Dto.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tasks_Dto.EndDate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Tasks_Dto.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a  class="btn btn-primary text-decoration-none" asp-page="/Tasks_Index">Back to List</a>
+    </form>
+</div>

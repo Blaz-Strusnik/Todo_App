@@ -1,0 +1,44 @@
+﻿@page
+@model Todo_App.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Task</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tasks_Dto.Task)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tasks_Dto.Task)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tasks_Dto.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tasks_Dto.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tasks_Dto.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tasks_Dto.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tasks_Dto.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tasks_Dto.EndDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary text-decoration-none"  asp-page="./Edit" asp-route-id="@Model.Tasks_Dto?.Id">Edit</a> |
+    <a class="btn btn-primary text-decoration-none" asp-page="/Tasks_Index">Back to List</a>
+</div>

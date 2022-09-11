@@ -1,0 +1,58 @@
+﻿@page
+@model Todo_App.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+@{
+    var UserName = User.Identity.Name;
+}
+<h1>Edit</h1>
+
+<h4>Task</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Tasks_Dto.Id" />
+            <div class="form-group">
+                <label asp-for="Tasks_Dto.Task" class="control-label"></label>
+                <input asp-for="Tasks_Dto.Task" class="form-control" />
+                <span asp-validation-for="Tasks_Dto.Task" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tasks_Dto.Description" class="control-label"></label>
+                <input asp-for="Tasks_Dto.Description" class="form-control" />
+                <span asp-validation-for="Tasks_Dto.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tasks_Dto.StartDate" class="control-label"></label>
+                <input asp-for="Tasks_Dto.StartDate" class="form-control" />
+                <span asp-validation-for="Tasks_Dto.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tasks_Dto.EndDate" class="control-label"></label>
+                <input asp-for="Tasks_Dto.EndDate" class="form-control" />
+                <span asp-validation-for="Tasks_Dto.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tasks_Dto.Ref_User_name" class="control-label"></label>
+                <input value="@UserName" asp-for="Tasks_Dto.Ref_User_name" class="form-control" />
+                <span asp-validation-for="Tasks_Dto.Ref_User_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary text-decoration-none" asp-page="/Tasks_Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

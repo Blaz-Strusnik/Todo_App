@@ -1,0 +1,61 @@
+﻿@page
+@model Todo_App.IndexModel
+
+@{
+    ViewData["Tasks"] = "Demo Todo App";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Tasks</h1>
+
+<p>
+    <a class=" btn btn-primary text-decoration-none"  asp-page="Create">Create Task</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks_Dto[0].Task)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks_Dto[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks_Dto[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tasks_Dto[0].EndDate)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Tasks_Dto) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                <a class="btn-sm btn-primary text-decoration-none" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+            </td>
+            <td>
+                    <a class="btn-sm btn-primary text-decoration-none" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+            </td>
+            <td>
+                    <a class="btn-sm btn-primary text-decoration-none" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
