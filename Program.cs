@@ -9,10 +9,11 @@ namespace Todo_App
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<Todo_AppContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("Todo_AppContext") ?? throw new InvalidOperationException("Connection string 'Todo_AppContext' not found.")));
 
-                        builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            builder.Services.AddDbContext<Todo_AppContext>(options =>
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'Todo_AppContext' not found.")));
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<Todo_AppContext>();
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
